@@ -60,10 +60,10 @@ export default function Register() {
     if (passwordConfirmation !== password) { 
       return setErrorMessage('A confirmação de password deve ser igual ao password!')
     }
-    const newUser = { 
-      user, 
-      password
-    }
+    // const newUser = { 
+    //   user, 
+    //   password
+    // }
     history.push('/leads');
   }
 

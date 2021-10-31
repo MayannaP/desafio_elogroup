@@ -1,5 +1,4 @@
 import logo from '../assets/elogroup.png';
-import AddLead from '../controllers/AddLead'
 
 export default function AddLeadView(props) {
   return(

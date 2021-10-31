@@ -1,4 +1,3 @@
-import LeadsRowView from './LeadsRowView';
 import logo from '../assets/elogroup.png';
 import AddLead from '../controllers/AddLead';
 
@@ -21,7 +20,11 @@ export default function LeadsView(props) {
           {
             props.leads.map((lead, index )=> { 
               return (
-                <LeadsRowView lead={lead} key={index} />
+                <tr key={index}>
+                <td id={0} >{lead.status === 0 &&  lead.name}</td>
+                <td id={1} >{lead.status === 1 &&  lead.name}</td>
+                <td id={2} >{lead.status === 2 &&  lead.name}</td>
+              </tr>
               )
             })
           }
