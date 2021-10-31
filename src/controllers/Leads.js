@@ -1,5 +1,5 @@
 import LeadsView from '../views/LeadsTableView';
-import {  useState } from 'react';
+import { useState } from 'react';
 
 export default function Leads() {  
   const [addLead, setAddLead]=useState(false); 

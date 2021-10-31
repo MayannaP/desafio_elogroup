@@ -18,7 +18,7 @@ export default function LeadsView(props) {
           </tr>
         </thead>
         <tbody>
-          {
+          {props.leads &&
             props.leads.map((lead, index )=> { 
               return (
                 <>

@@ -8,25 +8,6 @@ export default function AddLeadController({setAddLead}) {
   const [errorMessage, setErrorMessage] = useState('')
   const [savedLead, setSavedLead] = useState(false);
 
-  if (!localStorage.getItem('leads')) { 
-      const leads = [{ 
-          name: 'Mayanna', 
-          phone: "999999999", 
-          email: "mayannaporto@hotmail.com", 
-          opportunities: "RPA",
-          status: 0
-        }, 
-        { 
-          name: 'Mayanna', 
-          phone: "999999999", 
-          email: "mayannaporto@hotmail.com", 
-          opportunities: "RPA",
-          status: 1
-        }]
-      const newLeads = JSON.stringify(leads);
-      localStorage.setItem('leads', newLeads)
-  }
-
   function handleClick(e) {
     e.preventDefault();
     setSavedLead(false);
@@ -53,6 +34,9 @@ export default function AddLeadController({setAddLead}) {
     }
     
     let leads = JSON.parse(localStorage.getItem('leads'));
+    if (!leads) { 
+      leads = [];
+    }
 
     const newLead = { 
       name, 

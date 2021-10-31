@@ -20,7 +20,6 @@ export default function AddLeadView(props) {
           <label htmlFor="email">Email*</label>
           <input type="text" id="email" onChange={e=>props.setEmail(e.target.value)}/>
         </div>
-      
 
         <div className="modal__form-right">
           <h3>Oportunidades</h3>

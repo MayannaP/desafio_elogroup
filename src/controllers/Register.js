@@ -60,10 +60,19 @@ export default function Register() {
     if (passwordConfirmation !== password) { 
       return setErrorMessage('A confirmação de password deve ser igual ao password!')
     }
-    // const newUser = { 
-    //   user, 
-    //   password
-    // }
+    
+    let users = JSON.parse(localStorage.getItem('users'));
+    if (!users) { 
+      users = []; 
+    } 
+
+    const newUser = { 
+      user, 
+      password
+    }
+
+    users.push(newUser); 
+    localStorage.setItem('users', JSON.stringify(users))
     history.push('/leads');
   }
 
@@ -74,6 +83,7 @@ export default function Register() {
       setPassword={setPassword}
       setPasswordConfirmation={setPasswordConfirmation}
       errorMessage={errorMessage}
+      setErrorMessage={setErrorMessage}
     />
   )
 }
