@@ -38,7 +38,8 @@ export default function AddLeadController({setAddLead}) {
       leads = [];
     }
 
-    const newLead = { 
+    const newLead = {
+      id: leads.length+1,
       name, 
       phone, 
       email, 
