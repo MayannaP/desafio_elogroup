@@ -52,6 +52,6 @@ export default function LeadsView(props) {
         props.addLead && 
         <AddLead setAddLead={props.setAddLead}/>
       }
-    </ div>
+    </div>
   )
 }

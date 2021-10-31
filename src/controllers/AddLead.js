@@ -81,6 +81,7 @@ export default function AddLeadController({setAddLead}) {
       handleClick={handleClick}
       savedLead={savedLead}
       errorMessage={errorMessage}
+      setErrorMessage={setErrorMessage}
       handleSelectAll={handleSelectAll}
     />
   )
