@@ -1,7 +1,7 @@
 import { useState } from "react";
 import AddLeadView from "../views/AddLeadView";
 
-export default function AddLeadController() {
+export default function AddLeadController({setAddLead}) {
   const [name, setName] = useState('');
   const [phone, setPhone] = useState('');
   const [email, setEmail] = useState('');
@@ -76,6 +76,7 @@ export default function AddLeadController() {
     <AddLeadView 
       setName={setName}
       setPhone={setPhone}
+      setAddLead={setAddLead}
       setEmail={setEmail}
       handleClick={handleClick}
       savedLead={savedLead}

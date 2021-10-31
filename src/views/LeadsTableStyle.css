@@ -1,0 +1,18 @@
+.table { 
+  border-collapse: collapse;
+}
+
+.table th, td{ 
+  border: 1px solid black;
+  padding: 10px;
+}
+
+.table th { 
+  background-color: rgb(95, 95, 95);
+  color: white;
+}
+
+tbody tr:nth-child(even){
+  background-color: #c4c4c4;
+}
+

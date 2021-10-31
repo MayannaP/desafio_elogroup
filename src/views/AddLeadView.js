@@ -1,69 +1,82 @@
 import logo from '../assets/elogroup.png';
+import './AddLeadStyle.css'
 
 export default function AddLeadView(props) {
+  
   return(
-    <div className="container">
-      <img src={logo} alt="" />
-      <h1>Novo Lead</h1>
+  <div className="container">
+    <div className="modal">
+      <div className="modal__header">
+        <img src={logo} alt="" />
+        <h1>Novo Lead</h1>
+      </div>
       
-      <form>
-        <label htmlFor="name">Nome*</label>
-        <input type="text" id="name"  onChange={e=>props.setName(e.target.value)}/>
-        <label htmlFor="phone">Telefone*</label>
-        <input type="text" id="phone" onChange={e=>props.setPhone(e.target.value)} />
-        <label htmlFor="email">Email*</label>
-        <input type="text" id="email" onChange={e=>props.setEmail(e.target.value)} />
+      <form className="modal__form">
+        <div className="modal__form-left">
+          <label htmlFor="name">Nome*</label>
+          <input type="text" id="name"  onChange={e=>props.setName(e.target.value)}/>
+          <label htmlFor="phone">Telefone*</label>
+          <input type="text" id="phone" onChange={e=>props.setPhone(e.target.value)}/>
+          <label htmlFor="email">Email*</label>
+          <input type="text" id="email" onChange={e=>props.setEmail(e.target.value)}/>
+        </div>
       
-      <h3>Oportunidades</h3>
 
-        <table>
-          <thead>
-            <tr>
-              <td>
-                <input type="checkbox" name="box1" id="box1" onClick={e => props.handleSelectAll(e)}/>
-              </td>
-              <td></td>
-            </tr>
-          </thead>
+        <div className="modal__form-right">
+          <h3>Oportunidades</h3>
+          <table className="table">
+            <thead className="table__head">
+              <tr>
+                <th>
+                  <input type="checkbox" name="box1" id="box1" onClick={e => props.handleSelectAll(e)}/>
+                </th>
+                <th></th>
+              </tr>
+            </thead>
 
-          <tbody>
-            <tr>
-              <td>
-                <input type="checkbox" name="checkbox" id="box2" value="RPA"/>
-              </td>
-              <td>RPA</td>
-            </tr>
-            <tr>   
-              <td>
-                <input type="checkbox" name="checkbox" id="box3" value="Produto Digital" />
-              </td>
-              <td>Produto Digital</td>
-            </tr>
-            <tr>   
-              <td>
-                <input type="checkbox" name="checkbox" id="box4"  value="Analytics"/>
-              </td>
-              <td>Analytics</td>
-            </tr>
-            <tr>   
-              <td>
-                <input type="checkbox" name="checkbox" id="box5" value="BPM" />
-              </td>
-              <td>BPM</td>
-            </tr>
-          </tbody>
-        </table>
-        
-        <button onClick={e => props.handleClick(e)}>Salvar</button>
+            <tbody>
+              <tr>
+                <td>
+                  <input type="checkbox" name="checkbox" id="box2" value="RPA"/>
+                </td>
+                <td>RPA</td>
+              </tr>
+              <tr>   
+                <td>
+                  <input type="checkbox" name="checkbox" id="box3" value="Produto Digital" />
+                </td>
+                <td>Produto Digital</td>
+              </tr>
+              <tr>   
+                <td>
+                  <input type="checkbox" name="checkbox" id="box4"  value="Analytics"/>
+                </td>
+                <td>Analytics</td>
+              </tr>
+              <tr>   
+                <td>
+                  <input type="checkbox" name="checkbox" id="box5" value="BPM" />
+                </td>
+                <td>BPM</td>
+              </tr>
+            </tbody>
+          </table>
+          
+          <button onClick={e => props.handleClick(e)}>Salvar</button>
+        </div>
       </form>
       { 
         props.savedLead && 
-        <span>Lead salvo com sucesso!</span>
+        <div className="modal__popup">
+          <span>Lead salvo com sucesso!</span>
+          <button onClick={()=>props.setAddLead(false)}>Ok!</button>
+        </div>
       }
       {
         props.errorMessage &&
         <span>{props.errorMessage}</span>
       }
     </div>
+  </div>
   )
 }
