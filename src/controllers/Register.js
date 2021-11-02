@@ -13,27 +13,27 @@ export default function Register() {
   function validatePassword() {
     const passwordCharacters = password.split('');
     const specialCharacters = ["!", "@", "*", "/", "?", "-", "_", "$", "&", "#", "(", ")", ".", ","];
-  
+
     if (password.length < 8) {
       setErrorMessage('O campo password deve ter 8 ou mais caracteres!')
-      return false; 
-    }
-  
-    if (!specialCharacters.some(c=> passwordCharacters.includes(c))) {
-      setErrorMessage('A senha deve conter ao menos um caractere especial.'); 
       return false;
     }
-  
+
+    if (!specialCharacters.some(c => passwordCharacters.includes(c))) {
+      setErrorMessage('A senha deve conter ao menos um caractere especial.');
+      return false;
+    }
+
     if (!passwordCharacters.some(c => !isNaN(parseInt(c)))) {
-      setErrorMessage('A senha deve conter ao menos um caractere numérico.'); 
-      return false; 
+      setErrorMessage('A senha deve conter ao menos um caractere numérico.');
+      return false;
     }
-   
+
     if (!passwordCharacters.some(c => c.toUpperCase() !== c.toLocaleLowerCase())) {
-      setErrorMessage('A senha deve conter ao menos uma letra.'); 
-      return false; 
+      setErrorMessage('A senha deve conter ao menos uma letra.');
+      return false;
     }
-    return true; 
+    return true;
   }
 
   function handleClick(e) {
@@ -49,29 +49,29 @@ export default function Register() {
     }
 
     const isPasswordValid = validatePassword();
-    if (!isPasswordValid) { 
-      return; 
+    if (!isPasswordValid) {
+      return;
     }
 
     if (!passwordConfirmation) {
       return setErrorMessage('O campo de confirmação de password é obrigatório!')
     }
 
-    if (passwordConfirmation !== password) { 
+    if (passwordConfirmation !== password) {
       return setErrorMessage('A confirmação de password deve ser igual ao password!')
     }
-    
-    let users = JSON.parse(localStorage.getItem('users'));
-    if (!users) { 
-      users = []; 
-    } 
 
-    const newUser = { 
-      user, 
+    let users = JSON.parse(localStorage.getItem('users'));
+    if (!users) {
+      users = [];
+    }
+
+    const newUser = {
+      user,
       password
     }
 
-    users.push(newUser); 
+    users.push(newUser);
     localStorage.setItem('users', JSON.stringify(users))
     history.push('/leads');
   }
