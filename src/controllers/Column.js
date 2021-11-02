@@ -1,7 +1,7 @@
 import { useDrop } from 'react-dnd'
-import { Cell } from './Cell'
+import  ColumnView from '../views/ColumnView'
 
-export function Column({ accept, onDrop, lead, actualStage, index, lastChangedRow }) {
+export default function Column({ accept, onDrop, lead, actualStage, index, lastChangedRow }) {
   const [{ isOver, canDrop }, drop] = useDrop({
     accept,
     drop: onDrop,
@@ -20,10 +20,7 @@ export function Column({ accept, onDrop, lead, actualStage, index, lastChangedRo
   }
 
   return (
-    <td ref={drop} className="table__column" style={{ backgroundColor }}>
-      {lead &&
-        <Cell name={lead.name} type={actualStage} key={index} index={index} />
-      }
-    </td>
-  )
+      <ColumnView drop={drop} lead={lead} type={actualStage} key={index} index={index} backgroundColor={backgroundColor} />
+    )
+
 }
