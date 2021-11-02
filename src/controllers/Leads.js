@@ -21,32 +21,19 @@ export default function Leads() {
   const [lastChangedRow, setLastChangedRow] = useState('');
 
 
-  const handleDrop = useCallback((index, item) => {
+  const handleDrop = useCallback((index, item, leadId) => {
     if (item.status === 2) return; 
 
-    const { name } = item;
-    console.log(item)
-
     const updatedLeads = leads.map(lead => {
-      return lead.name === name ? { ...lead, status: lead.status + 1 } : lead;
+      return lead.id === leadId ? { ...lead, status: lead.status + 1 } : lead;
     });
 
     localStorage.setItem('leads', JSON.stringify(updatedLeads))
     setLeads(updatedLeads);
     setLastChangedRow(index);
   })
-  
-  const stages = [
-    {
-      stage: 0
-    },
-    {
-      stage: 1
-    },
-    {
-      stage: 2
-    }
-  ]
+
+  const stages = [0, 1, 2]
 
   return(
     <LeadsView 

@@ -26,11 +26,11 @@ export default function LeadsView({ stages, handleClick, leads, addLead, setAddL
                 { stages.map(stage => {
                   return ( 
                     <Column
-                    accept={!stage.stage ? '' : (stage.stage-1).toString()}
-                    onDrop={(item) => handleDrop(index, item)}
-                    key={'col' + stage.stage + 'row' + index}
-                    lead={lead.status === stage.stage ? lead : undefined}
-                    actualStage={stage.stage.toString()}
+                    accept={!stage ? '' : (stage - 1).toString()}
+                    onDrop={(item) => handleDrop(index, item, lead.id)}
+                    key={'col' + stage + 'row' + index}
+                    lead={lead.status === stage ? lead : undefined}
+                    actualStage={stage.toString()}
                     index={index} 
                     lastChangedRow={lastChangedRow}
                     />
