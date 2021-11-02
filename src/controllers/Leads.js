@@ -1,9 +1,9 @@
 import LeadsView from '../views/LeadsTableView';
-import { useEffect, useState } from 'react';
+import { useEffect} from 'react';
+import useLeads from '../hooks/useLeads';
 
 export default function Leads() {  
-  const [addLead, setAddLead]=useState(false); 
-  const [leads, setLeads] = useState([]);
+  const { leads, setLeads, addLead, setAddLead } = useLeads(); 
 
   useEffect( ()=> { 
     const savedLeads = JSON.parse(localStorage.getItem('leads'));

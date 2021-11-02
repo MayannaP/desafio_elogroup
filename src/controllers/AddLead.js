@@ -1,5 +1,6 @@
 import { useState } from "react";
 import AddLeadView from "../views/AddLeadView";
+import useLeads from "../hooks/useLeads";
 
 export default function AddLeadController({setAddLead}) {
   const [name, setName] = useState('');
@@ -7,7 +8,8 @@ export default function AddLeadController({setAddLead}) {
   const [email, setEmail] = useState('');
   const [errorMessage, setErrorMessage] = useState('')
   const [savedLead, setSavedLead] = useState(false);
-
+  const { saveLeadstoLocalStorage } = useLeads(); 
+  
   function handleClick(e) {
     e.preventDefault();
     setSavedLead(false);
@@ -32,23 +34,17 @@ export default function AddLeadController({setAddLead}) {
     if (!opportunities.length) { 
       return setErrorMessage('Selecione ao menos um dos itens de "oportunidades".')
     }
-    
-    let leads = JSON.parse(localStorage.getItem('leads'));
-    if (!leads) { 
-      leads = [];
-    }
 
     const newLead = {
-      id: leads.length+1,
+      id: 20,
       name, 
       phone, 
       email, 
       opportunities,
       status: 0
     }
-    leads.push(newLead)
-    localStorage.setItem('leads', JSON.stringify(leads))
 
+    saveLeadstoLocalStorage(newLead);
     setSavedLead(true);
   }
   

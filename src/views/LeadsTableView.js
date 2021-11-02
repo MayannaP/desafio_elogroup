@@ -1,8 +1,6 @@
 import logo from '../assets/elogroup.png';
 import AddLead from '../controllers/AddLead';
 import './LeadsTableStyle.css';
-import { DndProvider } from 'react-dnd';
-import { HTML5Backend } from 'react-dnd-html5-backend';
 import { useCallback, useState } from 'react';
 import { Column } from './Column';
 
@@ -11,7 +9,6 @@ export default function LeadsView({ handleClick, leads, setLeads, addLead, setAd
   const [lastChangedRow, setLastChangedRow] = useState('');
 
   const handleDrop = useCallback((index, item) => {
-    console.log(index, item)
     const { name } = item;
 
     const updatedLeads = leads.map(lead => {
@@ -23,13 +20,11 @@ export default function LeadsView({ handleClick, leads, setLeads, addLead, setAd
     setLastChangedRow(index);
   })
 
-
   return (
     <div>
       <img src={logo} alt="" />
       <h1>Painel de Leads</h1>
       <button onClick={handleClick}>Novo Lead (+)</button>
-      <DndProvider backend={HTML5Backend}>
         <table className="table" >
           <thead>
             <tr>
@@ -74,7 +69,6 @@ export default function LeadsView({ handleClick, leads, setLeads, addLead, setAd
             })}
           </tbody>
         </table>
-      </DndProvider>
       {
         addLead &&
         <AddLead setAddLead={setAddLead} />
