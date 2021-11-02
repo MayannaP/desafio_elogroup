@@ -3,7 +3,6 @@ import AddLead from '../controllers/AddLead';
 import '../styles/LeadsTableStyle.css';
 import Column from '../controllers/Column';
 
-  
 export default function LeadsView({ stages, handleClick, leads, addLead, setAddLead, handleDrop, lastChangedRow }) {
 
   return (

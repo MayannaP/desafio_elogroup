@@ -1,5 +1,6 @@
-import { useDrop } from 'react-dnd'
-import  ColumnView from '../views/ColumnView'
+import { useDrop } from 'react-dnd';
+import  ColumnView from '../views/ColumnView';
+import { useDrag } from 'react-dnd';
 
 export default function Column({ accept, onDrop, lead, actualStage, index, lastChangedRow }) {
   const [{ isOver, canDrop }, drop] = useDrop({
@@ -12,18 +13,22 @@ export default function Column({ accept, onDrop, lead, actualStage, index, lastC
   })
 
   const isActive = isOver && canDrop && lastChangedRow == index;
-  console.log({lastChangedRow, index})
+  
   let backgroundColor = '';
   if (isActive) {
     backgroundColor = 'darkgreen'
-  } else if (canDrop) {
-    backgroundColor = 'green'
+  // } else if (canDrop) {
+  //   backgroundColor = 'green'
   }
+  
+  const [, drag] = useDrag(() => ({
+    type: actualStage,
+    item: { name: lead?.name }
+  }), [lead?.name, actualStage])
 
-  console.log({backgroundColor})
 
   return (
-      <ColumnView drop={drop} lead={lead} type={actualStage} key={index} index={index} backgroundColor={backgroundColor} />
+      <ColumnView drop={drop} drag={drag} lead={lead} type={actualStage} key={index} index={index} backgroundColor={backgroundColor} />
     )
 
 }

@@ -20,7 +20,6 @@ export default function Leads() {
 
   const [lastChangedRow, setLastChangedRow] = useState('');
 
-
   const handleDrop = useCallback((index, item, leadId) => {
     if (item.status === 2) return; 
 
@@ -28,7 +27,7 @@ export default function Leads() {
       return lead.id === leadId ? { ...lead, status: lead.status + 1 } : lead;
     });
 
-    localStorage.setItem('leads', JSON.stringify(updatedLeads))
+    // localStorage.setItem('leads', JSON.stringify(updatedLeads))
     setLeads(updatedLeads);
     setLastChangedRow(index);
   })
