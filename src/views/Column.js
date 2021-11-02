@@ -1,14 +1,5 @@
 import { useDrop } from 'react-dnd'
-import { Box } from './Container'
-
-const styleColumn = {
-  width: '200px',
-  height: '20px',
-  color: 'black',
-  padding: '1rem',
-  textAlign: 'center',
-  fontSize: '1rem'
-}
+import { Cell } from './Cell'
 
 export function Column({ accept, onDrop, lead, actualStage, index }) {
   const [{ isOver, canDrop }, drop] = useDrop({
@@ -29,9 +20,9 @@ export function Column({ accept, onDrop, lead, actualStage, index }) {
   }
 
   return (
-    <td ref={drop} role="Column" style={{ ...styleColumn, backgroundColor }}>
-      { lead &&
-        <Box name={lead.name} type={actualStage} key={index} />
+    <td ref={drop} role="Column" className="table__column" style={{ backgroundColor }}>
+      {lead &&
+        <Cell name={lead.name} type={actualStage} key={index} />
       }
     </td>
   )

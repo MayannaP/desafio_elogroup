@@ -25,10 +25,15 @@ tbody tr:nth-child(even){
 }
 
 .table__column {
-  width: '200px';
-  height: '20px';
-  color: 'black';
-  padding: '1rem';
-  text-align: 'center';
-  font-size: '1rem'
+  width: 200px;
+  height: 20px;
+  color: black;
+  padding: 1rem;
+  text-align: center;
+  font-size: 1rem
+}
+
+.table__cell { 
+  border: 1px dashed gray ;
+  cursor: move;
 }
