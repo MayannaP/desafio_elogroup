@@ -1,4 +1,4 @@
-import './App.css';
+import './styles/App.css';
 import LeadsProvider from './contexts/LeadsProvider';
 import Routes from './Routes';
 import { DndProvider } from 'react-dnd';

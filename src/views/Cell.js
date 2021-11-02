@@ -1,5 +1,4 @@
-import { useDrag } from 'react-dnd'
-import './LeadsTableStyle.css'
+import { useDrag } from 'react-dnd';
 
 export function Cell({ name, type }) {
   const [, drag] = useDrag(() => ({

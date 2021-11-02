@@ -1,6 +1,6 @@
 import logo from '../assets/elogroup.png';
 import AddLead from '../controllers/AddLead';
-import './LeadsTableStyle.css';
+import 'C:/Users/May/Desktop/desafio_elogroup/desafio_elogroup/src/styles/LeadsTableStyle.css';
 import { Column } from './Column';
 
 export default function LeadsView({ handleClick, leads, addLead, setAddLead, handleDrop, lastChangedRow }) {

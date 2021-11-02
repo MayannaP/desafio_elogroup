@@ -1,4 +1,4 @@
-import './RegisterStyle.css';
+import '../styles/RegisterStyle.css';
 import logo from '../assets/elogroup.png'
 
 export default function RegisterView(props) {
