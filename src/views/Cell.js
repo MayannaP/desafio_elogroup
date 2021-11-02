@@ -8,7 +8,7 @@ export function Cell({ name, type }) {
   }), [name, type])
 
   return (
-    <div ref={drag} role="Cell" class="table__cell" >
+    <div ref={drag} className="table__cell" >
       {name}
     </div>
   )

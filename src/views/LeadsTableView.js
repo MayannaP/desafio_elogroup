@@ -8,17 +8,18 @@ import { Column } from './Column'
 
 export default function LeadsView({ handleClick, leads, setLeads, addLead, setAddLead}) {
 
-  const [lastDropped, setLastDropped] = useState(); 
+  const [lastChangedRow, setLastChangedRow] = useState(''); 
+
   const handleDrop = useCallback((index, item) => {
     console.log(index, item)
     const { name } = item;
 
     const updatedLeads = leads.map(lead => {
-      return lead.name === name ? { name, status: lead.status + 1 } : lead
+      return lead.name === name ? { name, status: lead.status + 1 } : lead;
     });
 
     setLeads(updatedLeads);
-    setLastDropped(index);
+    setLastChangedRow(index);
   })
 
   return(
@@ -46,7 +47,7 @@ export default function LeadsView({ handleClick, leads, setLeads, addLead, setAd
                       lead={lead.status === 0 ? lead : undefined}
                       actualStage={"0"}
                       index={index}
-                      lastDropped={lastDropped}
+                      lastChangedRow={lastChangedRow}
                       />
                     <Column
                       accept={"0"}
@@ -55,7 +56,7 @@ export default function LeadsView({ handleClick, leads, setLeads, addLead, setAd
                       lead={lead.status === 1 ? lead : undefined}
                       actualStage={"1"}
                       index={index}
-                      lastDropped={lastDropped}
+                      lastChangedRow={lastChangedRow}
                       />
                     <Column
                       accept={"1"}
@@ -64,7 +65,7 @@ export default function LeadsView({ handleClick, leads, setLeads, addLead, setAd
                       lead={lead.status === 2 ? lead : undefined}
                       actualStage={"2"}
                       index={index}
-                      lastDropped={lastDropped}
+                      lastChangedRow={lastChangedRow}
                     />
                 </tr>
               )
