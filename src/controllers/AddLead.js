@@ -8,7 +8,7 @@ export default function AddLeadController({setAddLead}) {
   const [email, setEmail] = useState('');
   const [errorMessage, setErrorMessage] = useState('')
   const [savedLead, setSavedLead] = useState(false);
-  const { saveLeadstoLocalStorage } = useLeads(); 
+  const { saveLeadstoLocalStorage, leads } = useLeads(); 
   
   function handleClick(e) {
     e.preventDefault();
@@ -36,7 +36,7 @@ export default function AddLeadController({setAddLead}) {
     }
 
     const newLead = {
-      id: 20,
+      id: leads.length+1,
       name, 
       phone, 
       email, 

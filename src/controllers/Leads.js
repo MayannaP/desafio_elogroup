@@ -1,4 +1,4 @@
-import LeadsView from '../views/LeadsTableView';
+import LeadsView from '../views/LeadsView';
 import { useEffect, useCallback, useState} from 'react';
 import useLeads from '../hooks/useLeads';
 
@@ -20,11 +20,15 @@ export default function Leads() {
 
   const [lastChangedRow, setLastChangedRow] = useState('');
 
+
   const handleDrop = useCallback((index, item) => {
+    if (item.status === 2) return; 
+
     const { name } = item;
+    console.log(item)
 
     const updatedLeads = leads.map(lead => {
-      return lead.name === name ? { name, status: lead.status + 1 } : lead;
+      return lead.name === name ? { ...lead, status: lead.status + 1 } : lead;
     });
 
     localStorage.setItem('leads', JSON.stringify(updatedLeads))
@@ -32,6 +36,18 @@ export default function Leads() {
     setLastChangedRow(index);
   })
   
+  const stages = [
+    {
+      stage: 0
+    },
+    {
+      stage: 1
+    },
+    {
+      stage: 2
+    }
+  ]
+
   return(
     <LeadsView 
       handleClick={handleClick}  
@@ -40,6 +56,7 @@ export default function Leads() {
       addLead={addLead}
       lastChangedRow={lastChangedRow}
       handleDrop={handleDrop}
+      stages={stages}
     />
   )
 }
