@@ -1,14 +1,15 @@
 import LeadsView from '../views/LeadsTableView';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 export default function Leads() {  
   const [addLead, setAddLead]=useState(false); 
   const [leads, setLeads] = useState([{name: "joao", status: 0}, {name: "ds", status: 2}]);
-  const newLeads = JSON.parse(localStorage.getItem('leads')); 
+
+  const savedLeads = JSON.parse(localStorage.getItem('leads'));
 
   function handleClick() {
     setAddLead(true);
-  }
+  } 
   
   return(
     <LeadsView 

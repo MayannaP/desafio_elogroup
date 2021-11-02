@@ -1,18 +1,13 @@
-import { useState, useCallback } from 'react'
-import { Dustbin } from './Dustbin'
+import { useCallback } from 'react'
+import { Column } from './Column'
 import { useDrag } from 'react-dnd'
 
 const styleBox = {
   border: '1px dashed gray',
-  backgroundColor: 'white',
-  padding: '0.5rem 1rem',
-  marginRight: '1.5rem',
-  marginBottom: '1.5rem',
   cursor: 'move',
-  float: 'left',
 }
 
-export function Box({ name, type, isDropped }) {
+export function Box({ name, type }) {
   const [, drag] = useDrag(() => ({
     type,
     item: { name }
@@ -20,7 +15,7 @@ export function Box({ name, type, isDropped }) {
 
   return (
     <div ref={drag} role="Box" style={{ ...styleBox }}>
-      {isDropped ? <s>{name}</s> : name}
+      {name}
     </div>
   )
 }
@@ -34,12 +29,11 @@ export function Container({leads, setLeads}) {
     });
 
     setLeads(updatedLeads);
-  }
-  )
+  })
 
   return (
     <div>
-      <table >
+      <table className="table" >
         <thead>
           <tr>
             <th>
@@ -57,8 +51,7 @@ export function Container({leads, setLeads}) {
           {leads.map((lead, index) => {
             return (
               <tr key={index}>
-                <td status={0}>
-                  <Dustbin
+                  <Column
                     accept={""}
                     onDrop={(item) => handleDrop(index, item)}
                     key={index}
@@ -66,9 +59,7 @@ export function Container({leads, setLeads}) {
                     actualStage={"0"}
                     index={index}
                   />
-                </td>
-                <td status={1}>
-                  <Dustbin
+                  <Column
                     accept={"0"}
                     onDrop={(item) => handleDrop(index, item)}
                     key={index}
@@ -76,9 +67,7 @@ export function Container({leads, setLeads}) {
                     actualStage={"1"}
                     index={index}
                   />
-                </td>
-                <td status={2}>
-                  <Dustbin
+                  <Column
                     accept={"1"}
                     onDrop={(item) => handleDrop(index, item)}
                     key={index}
@@ -86,7 +75,6 @@ export function Container({leads, setLeads}) {
                     actualStage={"2"}
                     index={index}
                   />
-                </td>
               </tr>
             )
           })}
