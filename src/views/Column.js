@@ -1,7 +1,7 @@
 import { useDrop } from 'react-dnd'
 import { Cell } from './Cell'
 
-export function Column({ accept, onDrop, lead, actualStage, index }) {
+export function Column({ accept, onDrop, lead, actualStage, index, lastDropped }) {
   const [{ isOver, canDrop }, drop] = useDrop({
     accept,
     drop: onDrop,
@@ -11,8 +11,8 @@ export function Column({ accept, onDrop, lead, actualStage, index }) {
     }),
   })
 
-  const isActive = isOver && canDrop
-  let backgroundColor = ''
+  const isActive = isOver && canDrop && lastDropped == index;
+  let backgroundColor = '';
   if (isActive) {
     backgroundColor = 'darkgreen'
   } else if (canDrop) {
@@ -22,7 +22,7 @@ export function Column({ accept, onDrop, lead, actualStage, index }) {
   return (
     <td ref={drop} role="Column" className="table__column" style={{ backgroundColor }}>
       {lead &&
-        <Cell name={lead.name} type={actualStage} key={index} />
+        <Cell name={lead.name} type={actualStage} key={index} index={index} />
       }
     </td>
   )

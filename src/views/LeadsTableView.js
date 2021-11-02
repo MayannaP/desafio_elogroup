@@ -3,12 +3,14 @@ import AddLead from '../controllers/AddLead';
 import './LeadsTableStyle.css';
 import { DndProvider } from 'react-dnd'
 import { HTML5Backend } from 'react-dnd-html5-backend'
-import { useCallback } from 'react'
+import { useCallback, useState } from 'react'
 import { Column } from './Column'
 
 export default function LeadsView({ handleClick, leads, setLeads, addLead, setAddLead}) {
 
+  const [lastDropped, setLastDropped] = useState(); 
   const handleDrop = useCallback((index, item) => {
+    console.log(index, item)
     const { name } = item;
 
     const updatedLeads = leads.map(lead => {
@@ -16,6 +18,7 @@ export default function LeadsView({ handleClick, leads, setLeads, addLead, setAd
     });
 
     setLeads(updatedLeads);
+    setLastDropped(index);
   })
 
   return(
@@ -35,7 +38,7 @@ export default function LeadsView({ handleClick, leads, setLeads, addLead, setAd
           <tbody>
             {leads.map((lead, index) => {
               return (
-                <tr key={index}>
+                <tr>
                     <Column
                       accept={""}
                       onDrop={(item) => handleDrop(index, item)}
@@ -43,7 +46,8 @@ export default function LeadsView({ handleClick, leads, setLeads, addLead, setAd
                       lead={lead.status === 0 ? lead : undefined}
                       actualStage={"0"}
                       index={index}
-                    />
+                      lastDropped={lastDropped}
+                      />
                     <Column
                       accept={"0"}
                       onDrop={(item) => handleDrop(index, item)}
@@ -51,7 +55,8 @@ export default function LeadsView({ handleClick, leads, setLeads, addLead, setAd
                       lead={lead.status === 1 ? lead : undefined}
                       actualStage={"1"}
                       index={index}
-                    />
+                      lastDropped={lastDropped}
+                      />
                     <Column
                       accept={"1"}
                       onDrop={(item) => handleDrop(index, item)}
@@ -59,6 +64,7 @@ export default function LeadsView({ handleClick, leads, setLeads, addLead, setAd
                       lead={lead.status === 2 ? lead : undefined}
                       actualStage={"2"}
                       index={index}
+                      lastDropped={lastDropped}
                     />
                 </tr>
               )

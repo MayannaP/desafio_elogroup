@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 
 export default function Leads() {  
   const [addLead, setAddLead]=useState(false); 
-  const [leads, setLeads] = useState([{name: "joao", status: 0}, {name: "ds", status: 2}]);
+  const [leads, setLeads] = useState([{name: "joao", status: 0}, {name: "ds", status: 1}]);
 
   const savedLeads = JSON.parse(localStorage.getItem('leads'));
 
