@@ -25,35 +25,3 @@ export default function useLeadsProvider() {
     setSavedLead
   }
 }
-
-
-// export default function useProvideAuth() {
-//   const [token, setToken] = useState(null);
-//   const [userInfo, setUserInfo] = useState({});
-
-//   const logar = async (userName, callback) => {
-
-//       const response = await fetch(`https://api.github.com/users/${userName}`, {mode: 'cors'})
-//       const text = await response.text();
-//       setUserInfo(JSON.parse(text));
-//       console.log(JSON.parse(text));
-//       if (response.status !== 200) { 
-//         return; 
-//       }
-
-//     setToken("user");
-//     callback();
-//   };
-
-//   const deslogar = (callback) => {
-//     setToken(null);
-//     callback();
-//   };
-
-//   return {
-//     token,
-//     logar,
-//     deslogar, 
-//     userInfo
-//   };
-// }

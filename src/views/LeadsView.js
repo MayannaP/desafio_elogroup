@@ -26,7 +26,7 @@ export default function LeadsView({ stages, savedLead, setSavedLead, handleClick
                   return ( 
                     <Column
                     accept={!stage ? '' : (stage - 1).toString()}
-                    onDrop={()=>handleDrop(lead.id)}
+                    onDrop={(item)=> handleDrop(item, item.name === lead.name ? lead.id : undefined )}
                     key={'col' + stage + 'row' + index}
                     lead={lead.status === stage ? lead : undefined}
                     actualStage={stage.toString()}

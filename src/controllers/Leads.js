@@ -11,20 +11,19 @@ export default function Leads() {
     if (savedLeads) { 
       setLeads(savedLeads);
     }
-    console.log('Renderizou')
   }, [addLead]);
   
   function handleClick() {
     setAddLead(true);
   } 
 
-  const handleDrop = useCallback((leadId) => {
-    // if (item.status === 2) return;
-    console.log(leadId)
+  const handleDrop = useCallback((item, leadId) => {
+    if (item.status >= 2) return;
+
     const updatedLeads = leads.map(lead => {
       return lead.id == leadId ? { ...lead, status: lead.status + 1 } : lead;
     });
-    console.log(updatedLeads)
+
     localStorage.setItem('leads', JSON.stringify(updatedLeads))
     setLeads(updatedLeads);
   })
