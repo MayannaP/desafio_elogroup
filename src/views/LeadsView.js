@@ -3,7 +3,7 @@ import AddLead from '../controllers/AddLead';
 import '../styles/LeadsTableStyle.css';
 import Column from '../controllers/Column';
 
-export default function LeadsView({ stages, handleClick, leads, addLead, setAddLead, handleDrop }) {
+export default function LeadsView({ stages, savedLead, setSavedLead, handleClick, leads, addLead, setAddLead, handleDrop }) {
 
   return (
     <div>
@@ -26,7 +26,7 @@ export default function LeadsView({ stages, handleClick, leads, addLead, setAddL
                   return ( 
                     <Column
                     accept={!stage ? '' : (stage - 1).toString()}
-                    onDrop={(item) => handleDrop(index, item, lead.id)}
+                    onDrop={()=>handleDrop(lead.id)}
                     key={'col' + stage + 'row' + index}
                     lead={lead.status === stage ? lead : undefined}
                     actualStage={stage.toString()}
@@ -42,6 +42,13 @@ export default function LeadsView({ stages, handleClick, leads, addLead, setAddL
       {
         addLead &&
         <AddLead setAddLead={setAddLead} />
+      }
+      { 
+        savedLead && 
+        <div className="modal__popup-success">
+          <span>Lead salvo com sucesso!</span>
+          <button onClick={()=>setSavedLead(false)}>Ok!</button>
+        </div>
       }
     </div>
   )

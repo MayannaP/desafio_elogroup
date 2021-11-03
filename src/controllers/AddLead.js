@@ -7,8 +7,7 @@ export default function AddLeadController({setAddLead}) {
   const [phone, setPhone] = useState('');
   const [email, setEmail] = useState('');
   const [errorMessage, setErrorMessage] = useState('')
-  const [savedLead, setSavedLead] = useState(false);
-  const { saveLeadstoLocalStorage, leads } = useLeads(); 
+  const { saveLeadstoLocalStorage, leads, setSavedLead } = useLeads(); 
   
   function handleClick(e) {
     e.preventDefault();
@@ -46,6 +45,7 @@ export default function AddLeadController({setAddLead}) {
 
     saveLeadstoLocalStorage(newLead);
     setSavedLead(true);
+    setAddLead(false);
   }
   
   function handleSelectAll(e) {
@@ -60,7 +60,6 @@ export default function AddLeadController({setAddLead}) {
       setAddLead={setAddLead}
       setEmail={setEmail}
       handleClick={handleClick}
-      savedLead={savedLead}
       errorMessage={errorMessage}
       setErrorMessage={setErrorMessage}
       handleSelectAll={handleSelectAll}

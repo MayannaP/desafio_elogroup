@@ -3,7 +3,7 @@ import { useEffect, useCallback} from 'react';
 import useLeads from '../hooks/useLeads';
 
 export default function Leads() {  
-  const { leads, setLeads, addLead, setAddLead } = useLeads(); 
+  const { leads, setLeads, addLead, setAddLead, savedLead, setSavedLead } = useLeads(); 
 
   useEffect( ()=> { 
     const savedLeads = JSON.parse(localStorage.getItem('leads'));
@@ -18,13 +18,13 @@ export default function Leads() {
     setAddLead(true);
   } 
 
-  const handleDrop = useCallback((item, leadId) => {
-    if (item.status === 2) return; 
-
+  const handleDrop = useCallback((leadId) => {
+    // if (item.status === 2) return;
+    console.log(leadId)
     const updatedLeads = leads.map(lead => {
-      return lead.id === leadId ? { ...lead, status: lead.status + 1 } : lead;
+      return lead.id == leadId ? { ...lead, status: lead.status + 1 } : lead;
     });
-
+    console.log(updatedLeads)
     localStorage.setItem('leads', JSON.stringify(updatedLeads))
     setLeads(updatedLeads);
   })
@@ -39,6 +39,8 @@ export default function Leads() {
       addLead={addLead}
       handleDrop={handleDrop}
       stages={stages}
+      savedLead={savedLead}
+      setSavedLead={setSavedLead}
     />
   )
 }

@@ -3,7 +3,7 @@ import ColumnView from '../views/ColumnView';
 import { useDrag } from 'react-dnd';
 
 export default function Column({ accept, onDrop, lead, actualStage, index }) {
-  const [{ isOver, canDrop }, drop] = useDrop({
+  const [, drop] = useDrop({
     accept,
     drop: onDrop,
     collect: (monitor) => ({
@@ -12,15 +12,6 @@ export default function Column({ accept, onDrop, lead, actualStage, index }) {
     }),
   })
 
-  const isActive = isOver && canDrop;
-
-  let backgroundColor = '';
-  if (isActive) {
-    backgroundColor = 'darkgreen'
-    // } else if (canDrop) {
-    //   backgroundColor = 'green'
-  }
-
   const [, drag] = useDrag(() => ({
     type: actualStage,
     item: { name: lead?.name }
@@ -28,7 +19,7 @@ export default function Column({ accept, onDrop, lead, actualStage, index }) {
 
 
   return (
-    <ColumnView drop={drop} drag={drag} lead={lead} type={actualStage} key={index} index={index} backgroundColor={backgroundColor} />
+    <ColumnView drop={drop} drag={drag} lead={lead} type={actualStage} key={index} index={index} />
   )
 
 }

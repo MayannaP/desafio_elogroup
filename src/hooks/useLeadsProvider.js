@@ -3,6 +3,7 @@ import { useState } from "react";
 export default function useLeadsProvider() {
   const [ leads, setLeads ] = useState([]);
   const [addLead, setAddLead] = useState(false); 
+  const [savedLead, setSavedLead] = useState(false);
 
   const saveLeadstoLocalStorage = (newLead) => { 
     let leads = JSON.parse(localStorage.getItem('leads'));
@@ -19,7 +20,9 @@ export default function useLeadsProvider() {
     leads, 
     setLeads, 
     addLead, 
-    setAddLead
+    setAddLead, 
+    savedLead, 
+    setSavedLead
   }
 }
 

@@ -64,13 +64,6 @@ export default function AddLeadView(props) {
           <button className="modal__button" onClick={e => props.handleClick(e)}>Salvar</button>
         </div>
       </form>
-      { 
-        props.savedLead && 
-        <div className="modal__popup-success">
-          <span>Lead salvo com sucesso!</span>
-          <button onClick={()=>props.setAddLead(false)}>Ok!</button>
-        </div>
-      }
       {
         props.errorMessage &&
           <div className="modal__popup-error">
