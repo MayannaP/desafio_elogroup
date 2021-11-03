@@ -3,7 +3,7 @@ import AddLead from '../controllers/AddLead';
 import '../styles/LeadsTableStyle.css';
 import Column from '../controllers/Column';
 
-export default function LeadsView({ stages, handleClick, leads, addLead, setAddLead, handleDrop, lastChangedRow }) {
+export default function LeadsView({ stages, handleClick, leads, addLead, setAddLead, handleDrop }) {
 
   return (
     <div>
@@ -31,7 +31,6 @@ export default function LeadsView({ stages, handleClick, leads, addLead, setAddL
                     lead={lead.status === stage ? lead : undefined}
                     actualStage={stage.toString()}
                     index={index} 
-                    lastChangedRow={lastChangedRow}
                     />
                   )
                 })}
