@@ -7,9 +7,11 @@ export default function LeadsView({ stages, savedLead, setSavedLead, handleClick
 
   return (
     <div>
-      <img src={logo} alt="" />
-      <h1>Painel de Leads</h1>
-      <button onClick={handleClick}>Novo Lead (+)</button>
+      <header className="header">
+        <img src={logo} alt="" />
+        <h1>Painel de Leads</h1>
+      </header>
+      <button className="new-lead__button" onClick={handleClick}>Novo Lead (+)</button>
       <table className="table" >
         <thead>
           <tr>

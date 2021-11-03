@@ -34,6 +34,26 @@ tbody tr:nth-child(even){
 }
 
 .table__cell { 
-  border: 1px dashed gray ;
   cursor: move;
+}
+
+.new-lead__button { 
+  all: unset; 
+  background-color: rgb(166, 167, 228);
+  border: 2px solid rgba(98, 100, 216, 0.685) ;
+  width: 15%;
+  padding: 1% 0;
+  text-align: center;
+  margin-bottom: 1%;
+  cursor: pointer;
+}
+
+.new-lead__button:hover { 
+  background-color: rgb(219, 220, 250);
+}
+
+.header { 
+  display: flex;
+  gap: 200px;
+  margin-bottom: 30px;
 }
